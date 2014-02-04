@@ -56,12 +56,13 @@ dim(CLEAN)
 **Prob 4:** How many missing values in the data frame `BABIES` are there for `gestation`, `age`, `height`, `weight`, and `smoke`, respectively?  How many rows of `BABIES` have no missing values, one missing value, two missing values, and three missing values, respectively?  Note: the number of rows in `CLEAN` should agree with your answer for the number of rows in `BABIES` that have no missing values.
 
 ```{r prob4}
-answer <- (dim(BABIES$gestation) [1] - dim(CLEAN$gestation)[1])
-dim(BABIES$gestation)
-dim(CLEAN$gestation)[1]
+unclean <- table(apply(is.na(BABIES),1,sum))
+dim(unclean)
+unclean[2]
+
 ```
 
-> **Prob 4 answer:** There 
+> **Prob 4 answer:** There are `r unclean[0]` rows with no missing values, `r unclean[1]` with one missing value, `r unclean[2]` with two missing values.
 
 
 **Prob 5:** Sort the values in `CLEAN` by `bwt`, `gestation`, and `age`.  Store the sorted values in a data frame named `BGA` and show the last six rows of `BGA`.
